@@ -10,7 +10,7 @@ const doc = {
   schemes: ['https']
 };
 
-const outputFile = './api-docs/swagger.json';
+const outputFile = './docs/swagger.json';
 const endpointsFiles = ['./routes/index.js'];
 
 /* NOTE: if you use the express Router, you must pass in the 
