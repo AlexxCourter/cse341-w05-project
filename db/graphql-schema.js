@@ -11,7 +11,7 @@ const schema = buildSchema(`
 const root = {
   hello: () => {
     return 'Hello world!';
-  },
+  }
 };
 
-module.exports = {schema, root};
+module.exports = { schema, root };

@@ -1,5 +1,6 @@
 const routes = require('express').Router();
 
-routes.use('/v1', require('./default'));
+routes.use('/user', require('./user'));
+routes.use('/achievements', require('./achievements'));
 
 module.exports = routes;

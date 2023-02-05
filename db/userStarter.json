@@ -1,0 +1,42 @@
+[
+  {
+    "userName": "Alexx",
+    "email": "alex@test.com",
+    "pass": "SDKFDGDLLDGJLDFGH4334604223465",
+    "bio": "Father and aspiring developer",
+    "achievements": [
+      { "id": "123", "completed": true },
+      { "id": "456", "completed": false },
+      { "id": "789", "completed": false },
+      { "id": "101", "completed": true },
+      { "id": "102", "completed": false }
+    ],
+    "points": 1000,
+    "createdDate": "12/04/2020"
+  },
+  {
+    "userName": "Nicole",
+    "email": "nicole@test.com",
+    "pass": "SDSFLLLILERIUREWTLWTW112212124352",
+    "bio": "Mother and excellent hugger",
+    "achievements": [
+      { "id": "123", "completed": true },
+      { "id": "456", "completed": false },
+      { "id": "102", "completed": false }
+    ],
+    "points": 5500,
+    "createdDate": "12/31/2020"
+  },
+  {
+    "userName": "Olivia",
+    "email": "olivia@test.com",
+    "pass": "UIUIHKHJGDKSGHTKASAAGGY9906989538945",
+    "bio": "Daughter and professional smiler",
+    "achievements": [
+      { "id": "123", "completed": true },
+      { "id": "456", "completed": false }
+    ],
+    "points": 200,
+    "createdDate": "12/19/2020"
+  }
+]

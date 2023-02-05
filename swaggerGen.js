@@ -6,7 +6,7 @@ const doc = {
     description:
       'This API allows the user to create contacts, find them later, update them, and delete them if necessary.'
   },
-  host: 'https://alex-courter-cse341.onrender.com',
+  host: 'achievementsapp.onrender.com',
   schemes: ['https']
 };
 

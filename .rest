@@ -1,0 +1,99 @@
+###RENDER getALlUsers
+GET https://achievementsapp.onrender.com/user 
+### should return entry for alex
+GET https://achievementsapp.onrender.com/user/63ded1058c69548205ed25bc
+###
+### POST a new user
+POST https://achievementsapp.onrender.com/user HTTP/1.1
+content-type: application/json
+
+{
+    "userName": "Newbie",
+    "email": "new@test.com",
+    "pass": "SD4223465",
+    "bio": "Brand new user",
+    "achievements": [
+        {"id": "123", "completed": true},
+        {"id": "456", "completed": false},
+        {"id": "789", "completed": false},
+        {"id": "101", "completed": true},
+        {"id": "102", "completed": false}
+    ],
+    "points": 700,
+    "createdDate": "10/14/2020"
+}
+
+### PUT a contact, updating it. This test will change the favoriteColor 
+PUT https://achievementsapp.onrender.com/user/63deeaaec64fa614cc72af45 HTTP/1.1
+content-type: application/json
+
+{
+    "userName": "Newbie",
+    "email": "new@test.com",
+    "pass": "SD4223465",
+    "bio": "Brand new user",
+    "achievements": [
+        {"id": "123", "completed": true},
+        {"id": "456", "completed": true},
+        {"id": "789", "completed": false},
+        {"id": "101", "completed": true},
+        {"id": "102", "completed": false}
+    ],
+    "points": 1700,
+    "createdDate": "10/14/2020"
+}
+
+### DELETE a contact using the provided ID in the request params
+DELETE https://achievementsapp.onrender.com/user/63deeaaec64fa614cc72af45 HTTP/1.1
+
+###
+### LOCAL
+###
+
+###local getALlUsers
+GET http://localhost:3000/user 
+### should return entry for alex
+GET http://localhost:3000/user/63ded1058c69548205ed25bc
+###
+### POST a new user
+POST http://localhost:3000/user HTTP/1.1
+content-type: application/json
+
+{
+    "userName": "Newbie",
+    "email": "new@test.com",
+    "pass": "SD4223465",
+    "bio": "Brand new user",
+    "achievements": [
+        {"id": "123", "completed": true},
+        {"id": "456", "completed": false},
+        {"id": "789", "completed": false},
+        {"id": "101", "completed": true},
+        {"id": "102", "completed": false}
+    ],
+    "points": 700,
+    "createdDate": "10/14/2020"
+}
+
+### PUT a contact, updating it. This test will change the favoriteColor 
+PUT http://localhost:3000/user/63deeaaec64fa614cc72af45 HTTP/1.1
+content-type: application/json
+
+{
+    "userName": "Newbie",
+    "email": "new@test.com",
+    "pass": "SD4223465",
+    "bio": "Brand new user",
+    "achievements": [
+        {"id": "123", "completed": true},
+        {"id": "456", "completed": true},
+        {"id": "789", "completed": false},
+        {"id": "101", "completed": true},
+        {"id": "102", "completed": false}
+    ],
+    "points": 1700,
+    "createdDate": "10/14/2020"
+}
+
+### DELETE a contact using the provided ID in the request params
+DELETE http://localhost:3000/user/63deeaaec64fa614cc72af45 HTTP/1.1

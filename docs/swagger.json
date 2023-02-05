@@ -1,23 +1,158 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Contacts API",
-    "description": "This API allows the user to create contacts, find them later, update them, and delete them if necessary.",
+    "title": "Users API",
+    "description": "This API allows the client to create, read, update, and delete Users of the Gamified Goal-setting Achievements Application.",
     "version": "1.0.0"
   },
-  "host": "https://alex-courter-cse341.onrender.com",
+  "host": "achievementsapp.onrender.com",
   "basePath": "/",
   "schemes": [
     "https"
   ],
   "paths": {
-    "/v1/": {
+    "/user/": {
       "get": {
-        "description": "",
+        "description": "Returns all of the user records contained in the database",
+        "produces": [
+          "application/json"
+        ],
         "parameters": [],
         "responses": {
           "200": {
             "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "description": "creates a new User record and saves it to the database. The body of the request contains a username, email, password hash for authentication, and other data for the User to utilize in goal setting.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "userName": {
+                  "example": "String"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "pass": {
+                  "example": "any"
+                },
+                "bio": {
+                  "example": "String"
+                },
+                "achievements": {
+                  "example": "List"
+                },
+                "points": {
+                  "example": "Int"
+                },
+                "createdDate": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/user/{id}": {
+      "get": {
+        "description": "returns a specific User based on the provided ID.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "description": "Update the User related to the given ID with new data.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "userName": {
+                  "example": "String"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "pass": {
+                  "example": "any"
+                },
+                "bio": {
+                  "example": "String"
+                },
+                "achievements": {
+                  "example": "List"
+                },
+                "points": {
+                  "example": "Int"
+                },
+                "createdDate": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "description": "Deletes the User related to the provided ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
