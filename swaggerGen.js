@@ -2,9 +2,9 @@ const swaggerAutogen = require('swagger-autogen')();
 
 const doc = {
   info: {
-    title: 'Contacts API',
+    title: 'Achievements API',
     description:
-      'This API allows the user to create contacts, find them later, update them, and delete them if necessary.'
+      'This API allows the client to create, read, update, and delete Users of the Gamified Goal-setting Achievements Application.'
   },
   host: 'achievementsapp.onrender.com',
   schemes: ['https']
