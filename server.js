@@ -1,5 +1,5 @@
 const express = require('express');
-const { graphqlHTTP } = require('express-graphql');
+//const { graphqlHTTP } = require('express-graphql');
 const { schema, root } = require('./db/graphql-schema');
 const app = express();
 const bodyParser = require('body-parser');
@@ -21,8 +21,9 @@ app
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
     next();
   })
+  
   //serve graphQL
-  .use(
+  /*.use(
     '/graphql',
     graphqlHTTP({
       schema: schema,
@@ -30,6 +31,7 @@ app
       graphiql: true
     })
   );
+  */
 
 /*
  * One line link to routes
