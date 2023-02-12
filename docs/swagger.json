@@ -13,6 +13,7 @@
   "paths": {
     "/user/": {
       "get": {
+        "tags": ["Users"],
         "description": "",
         "produces": [
           "application/json"
@@ -28,6 +29,7 @@
         }
       },
       "post": {
+        "tags": ["Users"],
         "description": "",
         "parameters": [
           {
@@ -73,6 +75,7 @@
     },
     "/user/{id}": {
       "get": {
+        "tags": ["Users"],
         "description": "",
         "produces": [
           "application/json"
@@ -95,6 +98,7 @@
         }
       },
       "put": {
+        "tags": ["Users"],
         "description": "",
         "parameters": [
           {
@@ -147,6 +151,7 @@
         }
       },
       "delete": {
+        "tags": ["Users"],
         "description": "",
         "parameters": [
           {
@@ -171,6 +176,7 @@
     },
     "/achievements/": {
       "get": {
+        "tags": ["Achievements"],
         "description": "",
         "produces": [
           "application/json"
@@ -183,6 +189,7 @@
         }
       },
       "post": {
+        "tags": ["Achievements"],
         "description": "",
         "parameters": [
           {
@@ -213,6 +220,7 @@
     },
     "/achievements/{id}": {
       "get": {
+        "tags": ["Achievements"],
         "description": "",
         "produces": [
           "application/json"
@@ -232,6 +240,7 @@
         }
       },
       "put": {
+        "tags": ["Achievements"],
         "description": "",
         "parameters": [
           {
@@ -266,6 +275,7 @@
         }
       },
       "delete": {
+        "tags": ["Achievements"],
         "description": "",
         "parameters": [
           {

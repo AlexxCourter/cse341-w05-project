@@ -9,7 +9,7 @@ content-type: application/json
 
 {
     "userName": "Newbie",
-    "email": "new@test.com",
+    "email": "new@test",
     "pass": "SD4223465",
     "bio": "Brand new user",
     "achievements": [
@@ -53,16 +53,16 @@ DELETE https://achievementsapp.onrender.com/user/63deeaaec64fa614cc72af45 HTTP/1
 ###local getALlUsers
 GET http://localhost:3000/user 
 ### should return entry for alex
-GET http://localhost:3000/user/63ded1058c69548205ed25bc
+GET http://localhost:3000/user/63ded1058c69548205ed25b
 ###
 ### POST a new user
 POST http://localhost:3000/user HTTP/1.1
 content-type: application/json
 
 {
-    "userName": "Newbie",
+    "userName": "New",
     "email": "new@test.com",
-    "pass": "SD4223465",
+    "pass": "SD422gfhfgfjfg",
     "bio": "Brand new user",
     "achievements": [
         {"id": "123", "completed": true},
@@ -71,12 +71,12 @@ content-type: application/json
         {"id": "101", "completed": true},
         {"id": "102", "completed": false}
     ],
-    "points": 700,
+    "points": "700",
     "createdDate": "10/14/2020"
 }
 
 ### PUT a contact, updating it. This test will change the favoriteColor 
-PUT http://localhost:3000/user/63deeaaec64fa614cc72af45 HTTP/1.1
+PUT http://localhost:3000/user/63e7bab97970cc44a71209e HTTP/1.1
 content-type: application/json
 
 {
@@ -96,4 +96,4 @@ content-type: application/json
 }
 
 ### DELETE a contact using the provided ID in the request params
-DELETE http://localhost:3000/user/63deeaaec64fa614cc72af45 HTTP/1.1
+DELETE http://localhost:3000/user/63e7bab97970cc44a71209ee HTTP/1.1
