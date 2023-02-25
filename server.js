@@ -8,6 +8,8 @@ const port = process.env.PORT || 3000;
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./docs/swagger.json');
 
+app.use(passport.initialize());
+
 app
   //serve API docs
   .use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
