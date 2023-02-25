@@ -11,7 +11,7 @@ const doc = {
   securityDefinitions: {
     oauth: {
       type: "oauth2",
-      authorizationUrl: "achievementsapp.onrender.com/auth",
+      authorizationUrl: "/auth",
       flow: "implicit",
       scopes: {
         read_Users: 'Authority to read Users in database granted on authentication.',
