@@ -3,6 +3,7 @@ const express = require('express');
 const { schema, root } = require('./db/graphql-schema');
 const app = express();
 const bodyParser = require('body-parser');
+const passport = require('passport');
 const port = process.env.PORT || 3000;
 
 const swaggerUi = require('swagger-ui-express');
