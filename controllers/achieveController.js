@@ -24,6 +24,8 @@ const collName = 'achievements';
  * @param {*} res The response is given for a GET request that gets all records
  */
 const getAllAchievements = async (req, res) => {
+  //#swagger.tags = ['Achievements']
+  //#swagger.description = 'Returns all achievements (goals) currently registered in the database.'
   try {
     await database.connectDB();
     const result = await database.getDb().db(dbName).collection(collName).find();
@@ -47,6 +49,8 @@ const getAllAchievements = async (req, res) => {
  * @param {*} res The response is given for a GET request that gets one record
  */
 const getOneAchievement = async (req, res) => {
+  //#swagger.tags = ['Achievements']
+  //#swagger.description = 'Returns one achievement based on a provided ID.'
   try {
     await database.connectDB();
     if(!ObjectId.isValid(req.params.id)){
@@ -75,6 +79,14 @@ const getOneAchievement = async (req, res) => {
  * @param {*} res The response acknowledges success with a 201 code
  */
 const createAchievement = async (req, res) => {
+  //#swagger.tags = ['Achievements']
+  //#swagger.description = 'Creates one achievement object and adds it to the database.'
+  /*#swagger.parameters['body'] = {
+    in: 'body',
+    description: 'Achievement object',
+    schema: {'$ref': '#/definitions/Achievement'}
+  }
+  */
   try{
     const newAchievement = await postAchieveSchema.validateAsync(req.body);
 
@@ -107,6 +119,14 @@ const createAchievement = async (req, res) => {
  * @param {*} res The response acknowledges that the change was sent to server with 204 code.
  */
 const updateAchievement = async (req, res) => {
+  //#swagger.tags = ['Achievements']
+  //#swagger.description = 'Updates one achievement based on a provided ID.'
+  /*#swagger.parameters['body'] = {
+    in: 'body',
+    description: 'Achievement object',
+    schema: {'$ref': '#/definitions/Achievement'}
+  }
+  */
   try {
     await database.connectDB();
 
@@ -152,6 +172,8 @@ const updateAchievement = async (req, res) => {
  * @param {*} res The response acknowledges success with a 200 code
  */
 const deleteAchievement = async (req, res) => {
+  //#swagger.tags = ['Achievements']
+  //#swagger.description = 'Deletes one achievement from the database associated to a provided ID.'
   try{
     await database.connectDB();
     const userId = new ObjectId(req.params.id);

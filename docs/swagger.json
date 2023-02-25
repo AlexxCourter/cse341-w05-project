@@ -10,56 +10,54 @@
   "schemes": [
     "https"
   ],
+  "securityDefinitions": {
+    "oauth": {
+      "type": "oauth2",
+      "authorizationUrl": "achievementsapp.onrender.com/auth",
+      "flow": "implicit",
+      "scopes": {
+        "read_Users": "Authority to read Users in database granted on authentication.",
+        "write_Users": "Authority to write Users to database granted on authentication.",
+        "read_Achievements": "Authority to read Achievements in database granted on authentication.",
+        "write_Achievements": "Authority to write Achievements to database granted on authentication."
+      }
+    }
+  },
   "paths": {
     "/user/": {
       "get": {
-        "tags": ["Users"],
-        "description": "",
+        "tags": [
+          "User"
+        ],
+        "description": "Returns all Users registered in the database.",
         "produces": [
           "application/json"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Returned all users successfully."
           },
           "400": {
-            "description": "Bad Request"
+            "description": "Could not get Users due to a problem fetching from the database."
+          },
+          "500": {
+            "description": "There was an issue with the server."
           }
         }
       },
       "post": {
-        "tags": ["Users"],
-        "description": "",
+        "tags": [
+          "User"
+        ],
+        "description": "Creates a new User registered to the database.",
         "parameters": [
           {
             "name": "body",
             "in": "body",
+            "description": "User object",
             "schema": {
-              "type": "object",
-              "properties": {
-                "userName": {
-                  "example": "any"
-                },
-                "email": {
-                  "example": "any"
-                },
-                "pass": {
-                  "example": "any"
-                },
-                "bio": {
-                  "example": "any"
-                },
-                "achievements": {
-                  "example": "any"
-                },
-                "points": {
-                  "example": "any"
-                },
-                "createdDate": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/User"
             }
           }
         ],
@@ -67,16 +65,29 @@
           "201": {
             "description": "Created"
           },
+          "422": {
+            "description": "Unprocessable Entity"
+          },
           "500": {
             "description": "Internal Server Error"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth": [
+              "write_User",
+              "read_User"
+            ]
+          }
+        ]
       }
     },
     "/user/{id}": {
       "get": {
-        "tags": ["Users"],
-        "description": "",
+        "tags": [
+          "User"
+        ],
+        "description": "Returns one User from the database using a provided ID.",
         "produces": [
           "application/json"
         ],
@@ -93,13 +104,15 @@
             "description": "OK"
           },
           "400": {
-            "description": "Bad Request"
+            "description": "Could not get Users due to a problem fetching from the database."
           }
         }
       },
       "put": {
-        "tags": ["Users"],
-        "description": "",
+        "tags": [
+          "User"
+        ],
+        "description": "Updates a specific User associated to provided ID with new data.",
         "parameters": [
           {
             "name": "id",
@@ -110,31 +123,9 @@
           {
             "name": "body",
             "in": "body",
+            "description": "User object",
             "schema": {
-              "type": "object",
-              "properties": {
-                "userName": {
-                  "example": "any"
-                },
-                "email": {
-                  "example": "any"
-                },
-                "pass": {
-                  "example": "any"
-                },
-                "bio": {
-                  "example": "any"
-                },
-                "achievements": {
-                  "example": "any"
-                },
-                "points": {
-                  "example": "any"
-                },
-                "createdDate": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/User"
             }
           }
         ],
@@ -145,14 +136,19 @@
           "400": {
             "description": "Bad Request"
           },
+          "422": {
+            "description": "Unprocessable Entity"
+          },
           "500": {
             "description": "Internal Server Error"
           }
         }
       },
       "delete": {
-        "tags": ["Users"],
-        "description": "",
+        "tags": [
+          "User"
+        ],
+        "description": "Deletes a User from the database.",
         "parameters": [
           {
             "name": "id",
@@ -166,7 +162,7 @@
             "description": "OK"
           },
           "400": {
-            "description": "Bad Request"
+            "description": "A valid User ID must be provided."
           },
           "500": {
             "description": "Internal Server Error"
@@ -176,8 +172,10 @@
     },
     "/achievements/": {
       "get": {
-        "tags": ["Achievements"],
-        "description": "",
+        "tags": [
+          "Achievements"
+        ],
+        "description": "Returns all achievements (goals) currently registered in the database.",
         "produces": [
           "application/json"
         ],
@@ -185,32 +183,33 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
       "post": {
-        "tags": ["Achievements"],
-        "description": "",
+        "tags": [
+          "Achievements"
+        ],
+        "description": "Creates one achievement object and adds it to the database.",
         "parameters": [
           {
             "name": "body",
             "in": "body",
+            "description": "Achievement object",
             "schema": {
-              "type": "object",
-              "properties": {
-                "taskName": {
-                  "example": "any"
-                },
-                "points": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/Achievement"
             }
           }
         ],
         "responses": {
           "201": {
             "description": "Created"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
           },
           "500": {
             "description": "Internal Server Error"
@@ -220,8 +219,10 @@
     },
     "/achievements/{id}": {
       "get": {
-        "tags": ["Achievements"],
-        "description": "",
+        "tags": [
+          "Achievements"
+        ],
+        "description": "Returns one achievement based on a provided ID.",
         "produces": [
           "application/json"
         ],
@@ -236,12 +237,20 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
       "put": {
-        "tags": ["Achievements"],
-        "description": "",
+        "tags": [
+          "Achievements"
+        ],
+        "description": "Updates one achievement based on a provided ID.",
         "parameters": [
           {
             "name": "id",
@@ -252,16 +261,9 @@
           {
             "name": "body",
             "in": "body",
+            "description": "Achievement object",
             "schema": {
-              "type": "object",
-              "properties": {
-                "taskName": {
-                  "example": "any"
-                },
-                "points": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/Achievement"
             }
           }
         ],
@@ -269,14 +271,22 @@
           "204": {
             "description": "No Content"
           },
+          "400": {
+            "description": "Bad Request"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          },
           "500": {
             "description": "Internal Server Error"
           }
         }
       },
       "delete": {
-        "tags": ["Achievements"],
-        "description": "",
+        "tags": [
+          "Achievements"
+        ],
+        "description": "Deletes one achievement from the database associated to a provided ID.",
         "parameters": [
           {
             "name": "id",
@@ -292,6 +302,66 @@
           "500": {
             "description": "Internal Server Error"
           }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+      "type": "object",
+      "properties": {
+        "userName": {
+          "type": "string",
+          "example": "Alexx"
+        },
+        "email": {
+          "type": "string",
+          "example": "example@test.com"
+        },
+        "pass": {
+          "type": "string",
+          "example": "dgfg2235135"
+        },
+        "bio": {
+          "type": "string",
+          "example": "A short user-submitted self-description"
+        },
+        "achievements": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "63f1be5d8d3384a384ba324b"
+              },
+              "completed": {
+                "type": "boolean",
+                "example": true
+              }
+            }
+          }
+        },
+        "points": {
+          "type": "number",
+          "example": 2000
+        },
+        "createdDate": {
+          "type": "string",
+          "example": "12/04/1994"
+        }
+      }
+    },
+    "Achievement": {
+      "type": "object",
+      "properties": {
+        "taskName": {
+          "type": "string",
+          "example": "Clean Kitchen"
+        },
+        "taskPoints": {
+          "type": "number",
+          "example": 2000
         }
       }
     }

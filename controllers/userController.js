@@ -25,20 +25,34 @@ const collName = 'users';
  * @param {*} res The response is given for a GET request that gets all records
  */
 const getAllUsers = async (req, res) => {
+  //#swagger.tags = ['User']
+  //#swagger.description = 'Returns all Users registered in the database.'
   try{
     await database.connectDB();
     const result = await database.getDb().db(dbName).collection(collName).find();
     result.toArray().then((lists) => {
       res.setHeader('Content-Type', 'application/json');
       if(lists.length > 0){
+        /* #swagger.responses[200] = {
+            description: 'Returned all users successfully.',
+          }
+        */
         res.status(200).json(lists);
       } else {
         //error response when an empty dataset is returned
+        /* #swagger.responses[400] = {
+            description: 'Could not get Users due to a problem fetching from the database.',
+          }
+        */
         res.status(400).json('Could not get Users due to a problem fetching from the database.');
       }
       
     });
   } catch(e) {
+    /* #swagger.responses[500] = {
+            description: 'There was an issue with the server.',
+          }
+        */
     res.status(500).json(e.message);
   }
   
@@ -54,6 +68,8 @@ const getAllUsers = async (req, res) => {
  * @param {*} res The response is given for a GET request that gets one record
  */
 const getOneUser = async (req, res) => {
+  //#swagger.tags = ['User']
+  //#swagger.description = 'Returns one User from the database using a provided ID.'
   await database.connectDB();
 
   if(!ObjectId.isValid(req.params.id)){
@@ -68,6 +84,10 @@ const getOneUser = async (req, res) => {
         res.status(200).json(lists[0]);
       } else {
         //error response when an empty dataset is returned
+        /* #swagger.responses[400] = {
+            description: 'Could not get Users due to a problem fetching from the database.',
+          }
+        */
         res.status(400).json('Could not get User due to a problem fetching from the database.');
       }
     });
@@ -84,15 +104,20 @@ const getOneUser = async (req, res) => {
  * @param {*} res The response acknowledges success with a 201 code
  */
 const createUser = async (req, res) => {
-  // const newUser = {
-  //   username: req.body.userName,
-  //   email: req.body.email,
-  //   pass: req.body.pass, //need to use OAuth and password hashing
-  //   bio: req.body.bio,
-  //   achievements: req.body.achievements,
-  //   points: req.body.points,
-  //   createdDate: req.body.createdDate
-  // };
+  //#swagger.tags = ['User']
+  //#swagger.description = 'Creates a new User registered to the database.'
+  /* #swagger.security = [{
+            "oauth": [
+                "write_User",
+                "read_User"
+            ]
+        }] */
+  /*#swagger.parameters['body'] = {
+    in: 'body',
+    description: 'User object',
+    schema: {'$ref': '#/definitions/User'}
+  }
+  */
   try {
     const newUser = await postUserSchema.validateAsync(req.body);
 
@@ -122,6 +147,14 @@ const createUser = async (req, res) => {
  * @param {*} res The response reports success with a 204 code
  */
 const updateUser = async (req, res) => {
+  //#swagger.tags = ['User']
+  //#swagger.description = 'Updates a specific User associated to provided ID with new data.'
+  /*#swagger.parameters['body'] = {
+    in: 'body',
+    description: 'User object',
+    schema: {'$ref': '#/definitions/User'}
+  }
+  */
   await database.connectDB();
 
   try {
@@ -164,10 +197,16 @@ const updateUser = async (req, res) => {
  * @param {*} res The response acknowledges success with a 200 code
  */
 const deleteUser = async (req, res) => {
+  //#swagger.tags = ['User']
+  //#swagger.description = 'Deletes a User from the database.'
   try{
     await database.connectDB();
 
     if(!ObjectId.isValid(req.params.id)){
+      /* #swagger.responses[400] = {
+            description: 'A valid User ID must be provided.',
+          }
+        */
       res.status(400).json("You must provide a valid User ID.");
     } else {
       const userId = new ObjectId(req.params.id);
