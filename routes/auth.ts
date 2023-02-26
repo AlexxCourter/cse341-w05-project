@@ -11,13 +11,10 @@ auth.get(
   '/google/callback',
   //#swagger.ignore = true
   routePassport.authenticate('google', { failureRedirect: '/' }),
-  (req,res) => {
-    console.log('auth successful');
+  (req, res) => {
     if (req.isAuthenticated) {
-      console.log(
-        res
-      );
-      res.redirect('/login')
+      console.log('auth successful');
+      res.redirect('/login');
     }
   }
 );

@@ -10,7 +10,7 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./docs/swagger.json');
 
 const dotenv = require('dotenv');
-dotenv.config({path: '.env'});
+dotenv.config({ path: '.env' });
 
 require('./db/passport.ts')(passport);
 

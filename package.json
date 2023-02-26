@@ -8,7 +8,7 @@
     "start": "node server.ts",
     "dev": "nodemon server.ts",
     "swag": "node swaggerGen.ts",
-    "lint": "eslint .",
+    "lint": "eslint *.ts",
     "lint:fix": "eslint --fix",
     "format": "npx prettier --write . --config ./.prettierrc"
   },

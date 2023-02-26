@@ -7,9 +7,7 @@
   },
   "host": "achievementsapp.onrender.com",
   "basePath": "/",
-  "schemes": [
-    "https"
-  ],
+  "schemes": ["https"],
   "securityDefinitions": {
     "oauth2": {
       "type": "oauth2",
@@ -26,13 +24,9 @@
   "paths": {
     "/user/": {
       "get": {
-        "tags": [
-          "User"
-        ],
+        "tags": ["User"],
         "description": "Returns all Users registered in the database.",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "parameters": [],
         "responses": {
           "200": {
@@ -47,9 +41,7 @@
         }
       },
       "post": {
-        "tags": [
-          "User"
-        ],
+        "tags": ["User"],
         "description": "Creates a new User registered to the database.",
         "parameters": [
           {
@@ -74,23 +66,16 @@
         },
         "security": [
           {
-            "oauth2": [
-              "write_User",
-              "read_User"
-            ]
+            "oauth2": ["write_User", "read_User"]
           }
         ]
       }
     },
     "/user/{id}": {
       "get": {
-        "tags": [
-          "User"
-        ],
+        "tags": ["User"],
         "description": "Returns one User from the database using a provided ID.",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "parameters": [
           {
             "name": "id",
@@ -109,9 +94,7 @@
         }
       },
       "put": {
-        "tags": [
-          "User"
-        ],
+        "tags": ["User"],
         "description": "Updates a specific User associated to provided ID with new data.",
         "parameters": [
           {
@@ -145,9 +128,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "User"
-        ],
+        "tags": ["User"],
         "description": "Deletes a User from the database.",
         "parameters": [
           {
@@ -172,13 +153,9 @@
     },
     "/achievements/": {
       "get": {
-        "tags": [
-          "Achievements"
-        ],
+        "tags": ["Achievements"],
         "description": "Returns all achievements (goals) currently registered in the database.",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "parameters": [],
         "responses": {
           "200": {
@@ -190,9 +167,7 @@
         }
       },
       "post": {
-        "tags": [
-          "Achievements"
-        ],
+        "tags": ["Achievements"],
         "description": "Creates one achievement object and adds it to the database.",
         "parameters": [
           {
@@ -219,13 +194,9 @@
     },
     "/achievements/{id}": {
       "get": {
-        "tags": [
-          "Achievements"
-        ],
+        "tags": ["Achievements"],
         "description": "Returns one achievement based on a provided ID.",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "parameters": [
           {
             "name": "id",
@@ -247,9 +218,7 @@
         }
       },
       "put": {
-        "tags": [
-          "Achievements"
-        ],
+        "tags": ["Achievements"],
         "description": "Updates one achievement based on a provided ID.",
         "parameters": [
           {
@@ -283,9 +252,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Achievements"
-        ],
+        "tags": ["Achievements"],
         "description": "Deletes one achievement from the database associated to a provided ID.",
         "parameters": [
           {

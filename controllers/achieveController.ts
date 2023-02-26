@@ -55,7 +55,11 @@ const getOneAchievement = async (req, res) => {
       res.status(400).json('You must provide a valid Achievement ID.');
     }
     const userId = new MongoObjectId(req.params.id);
-    const result = await dbase.getDb().db(databaseName).collection(collectName).find({ _id: userId });
+    const result = await dbase
+      .getDb()
+      .db(databaseName)
+      .collection(collectName)
+      .find({ _id: userId });
     result.toArray().then((lists) => {
       res.setHeader('Content-Type', 'application/json');
       res.status(200).json(lists[0]);
@@ -87,7 +91,11 @@ const createAchievement = async (req, res) => {
     const newAchievement = await Schema.validateAsync(req.body);
 
     await dbase.connectDB();
-    const result = await dbase.getDb().db(databaseName).collection(collectName).insertOne(newAchievement);
+    const result = await dbase
+      .getDb()
+      .db(databaseName)
+      .collection(collectName)
+      .insertOne(newAchievement);
     if (result.acknowledged) {
       res.status(201).json(result);
     } else {
