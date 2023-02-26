@@ -12,15 +12,19 @@ module.exports = function(passport){
             clientSecret: process.env.GOOGLE_CLIENT_SECRET,
             callbackURL: '/auth/google/callback'
         },
+        function(accessToken, refreshToken, profile, done) {
+            const user = {
+                displayName: profile.displayName,
+                googleId: profile.id
+            }
+            return done(null, user);
+        }
     ));
-
-    passport.serializeUser(function (user, done){
-        done(null,user.id);
-    });
-
-    passport.deserializeUser(function (id,done){
-        User.findById(id, function(err,user){
-            done(err,user);
-        });
-    });
+    passport.serializeUser(function(user, done) {
+        done(null, user);
+      });
+      
+    passport.deserializeUser(function(user, done) {
+        done(null, user);
+      });
 }
