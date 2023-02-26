@@ -175,19 +175,27 @@ const deleteAchievement = async (req, res) => {
   //#swagger.tags = ['Achievements']
   //#swagger.description = 'Deletes one achievement from the database associated to a provided ID.'
   try {
-    await dbase.connectDB();
-    const userId = new MongoObjectId(req.params.id);
-    const result = await dbase
-      .getDb()
-      .db(databaseName)
-      .collection(collectName)
-      .deleteOne({ _id: userId });
-    if (result.deletedCount > 0) {
-      res.status(200).send();
-    } else {
-      res
-        .status(500)
-        .json(result.error || 'Error: Something went wrong while deleting the achievement.');
+      if (!MongoObjectId.isValid(req.params.id)) {
+        /* #swagger.responses[400] = {
+              description: 'A valid User ID must be provided.',
+            }
+          */
+        res.status(400).json('You must provide a valid User ID.');
+      } else {
+      await dbase.connectDB();
+      const userId = new MongoObjectId(req.params.id);
+      const result = await dbase
+        .getDb()
+        .db(databaseName)
+        .collection(collectName)
+        .deleteOne({ _id: userId });
+      if (result.deletedCount > 0) {
+        res.status(200).send();
+      } else {
+        res
+          .status(500)
+          .json(result.error || 'Error: Something went wrong while deleting the achievement.');
+      }
     }
   } catch (e) {
     console.error(e);
