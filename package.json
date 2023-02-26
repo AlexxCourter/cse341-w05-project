@@ -2,12 +2,12 @@
   "name": "cse341-w05-project",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "server.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "dev": "nodemon server.js",
-    "swag": "node swaggerGen.js",
+    "start": "node server.ts",
+    "dev": "nodemon server.ts",
+    "swag": "node swaggerGen.ts",
     "lint": "eslint .",
     "lint:fix": "eslint --fix",
     "format": "npx prettier --write . --config ./.prettierrc"

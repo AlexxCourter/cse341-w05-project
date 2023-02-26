@@ -1,6 +1,6 @@
 const express = require('express');
 //const { graphqlHTTP } = require('express-graphql');
-const { schema, root } = require('./db/graphql-schema');
+//const { schema, root } = require('./db/graphql-schema');
 const app = express();
 const bodyParser = require('body-parser');
 const passport = require('passport');
@@ -9,13 +9,18 @@ const session = require('express-session');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./docs/swagger.json');
 
-require('./db/passport')(passport);
+const dotenv = require('dotenv');
+dotenv.config({path: '.env'});
 
-app.use(session({
-  secret:"xyz",
-  resave: false,
-  saveUninitialized: false
-}))
+require('./db/passport.ts')(passport);
+
+app.use(
+  session({
+    secret: 'xyz',
+    resave: false,
+    saveUninitialized: false
+  })
+);
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -31,10 +36,10 @@ app
     //allow domains with access to execute all HTTP CRUD methods.
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
     next();
-  })
-  
-  //serve graphQL
-  /*.use(
+  });
+
+//serve graphQL
+/*.use(
     '/graphql',
     graphqlHTTP({
       schema: schema,
@@ -47,7 +52,7 @@ app
 /*
  * One line link to routes
  */
-app.use('/', require('./routes'));
+app.use('/', require('./routes/index.ts'));
 
 app.listen(port, () => {
   console.log(`L05 App listening on port ${port}`);

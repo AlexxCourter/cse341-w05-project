@@ -10,9 +10,9 @@ const doc = {
   schemes: ['https'],
   securityDefinitions: {
     oauth2: {
-      type: "oauth2",
-      authorizationUrl: "/auth",
-      flow: "implicit",
+      type: 'oauth2',
+      authorizationUrl: '/auth',
+      flow: 'implicit',
       scopes: {
         read_Users: 'Authority to read Users in database granted on authentication.',
         write_Users: 'Authority to write Users to database granted on authentication.',
@@ -23,24 +23,23 @@ const doc = {
   },
   definitions: {
     User: {
-      userName:"Alexx",
-      email:"example@test.com",
-      pass:"dgfg2235135",
-      bio:"A short user-submitted self-description",
-      achievements:[{id: "63f1be5d8d3384a384ba324b", completed: true}],
+      userName: 'Alexx',
+      email: 'example@test.com',
+      pass: 'dgfg2235135',
+      bio: 'A short user-submitted self-description',
+      achievements: [{ id: '63f1be5d8d3384a384ba324b', completed: true }],
       points: 2000,
-      createdDate:"12/04/1994"
+      createdDate: '12/04/1994'
     },
     Achievement: {
-      taskName: "Clean Kitchen",
+      taskName: 'Clean Kitchen',
       taskPoints: 2000
     }
   }
-
 };
 
 const outputFile = './docs/swagger.json';
-const endpointsFiles = ['./routes/index.js'];
+const endpointsFiles = ['./routes/index.ts'];
 
 /* NOTE: if you use the express Router, you must pass in the 
      'endpointsFiles' only the root file where the route starts,
