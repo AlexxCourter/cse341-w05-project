@@ -134,7 +134,7 @@ const updateAchievement = async (req, res) => {
     await dbase.connectDB();
 
     if (!MongoObjectId.isValid(req.params.id)) {
-      res.status(400).json('You must provide a valid User ID.');
+      res.status(400).json('You must provide a valid Achievement ID.');
     } else {
       const userId = new MongoObjectId(req.params.id);
 
