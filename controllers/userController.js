@@ -107,7 +107,7 @@ const createUser = async (req, res) => {
   //#swagger.tags = ['User']
   //#swagger.description = 'Creates a new User registered to the database.'
   /* #swagger.security = [{
-            "oauth": [
+            "oauth2": [
                 "write_User",
                 "read_User"
             ]

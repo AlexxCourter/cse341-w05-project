@@ -1,9 +1,6 @@
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const database = require('../db/connector');
 
-const dbName = 'GoalAchievement'; //enter with exact capitalization
-const collName = 'users';
-const User = await database.getDb().db(dbName).collection(collName);
 
 module.exports = function(passport){
     passport.use(new GoogleStrategy(

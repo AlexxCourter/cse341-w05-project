@@ -9,7 +9,7 @@ const doc = {
   host: 'achievementsapp.onrender.com',
   schemes: ['https'],
   securityDefinitions: {
-    oauth: {
+    oauth2: {
       type: "oauth2",
       authorizationUrl: "/auth",
       flow: "implicit",

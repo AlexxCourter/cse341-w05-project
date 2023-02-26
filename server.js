@@ -5,11 +5,19 @@ const app = express();
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const port = process.env.PORT || 3000;
-
+const session = require('express-session');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./docs/swagger.json');
 
+require('./db/passport')(passport);
+
+app.use(session({
+  secret:"xyz",
+  resave: false,
+  saveUninitialized: false
+}))
 app.use(passport.initialize());
+app.use(passport.session());
 
 app
   //serve API docs
