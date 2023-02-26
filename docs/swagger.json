@@ -11,7 +11,7 @@
   "securityDefinitions": {
     "oauth2": {
       "type": "oauth2",
-      "authorizationUrl": "/auth",
+      "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
       "flow": "implicit",
       "scopes": {
         "read_Users": "Authority to read Users in database granted on authentication.",
