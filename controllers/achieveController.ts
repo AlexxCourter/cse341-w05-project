@@ -7,7 +7,7 @@
  * 1.0.1 - updated with basic error handling
  */
 
-const { MongoObjectId } = require('mongodb');
+const { MongoObjectId } = require('mongodb').ObjectId;
 const dbase = require('../db/connector.ts');
 const Schema = require('../validation/validation_schema.ts').postAchieveSchema;
 const databaseName = 'GoalAchievement'; //enter with exact capitalization
